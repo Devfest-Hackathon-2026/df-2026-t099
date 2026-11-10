@@ -77,7 +77,7 @@ async function ShareView({ params }: { params: PageProps<"/s/[id]">["params"] })
             <ArrowRight size={18} aria-hidden />
           </Link>
           <Link href="/" className="mt-4 inline-flex min-h-11 items-center text-sm font-bold text-white/70 hover:text-white">
-            BubbLensについて
+            BubbLens について
           </Link>
         </section>
       </main>
