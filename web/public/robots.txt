@@ -1,0 +1,3 @@
+# 試作なので検索エンジンには載せない
+User-agent: *
+Disallow: /

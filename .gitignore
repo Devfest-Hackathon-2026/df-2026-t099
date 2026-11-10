@@ -32,3 +32,9 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 *.log
+
+# 開発で使うもの
+*.local
+node_modules/
+.next/
+.DS_Store

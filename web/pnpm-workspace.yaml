@@ -1,0 +1,8 @@
+allowBuilds:
+  sharp: false
+  unrs-resolver: false
+  # どちらもインストール時のスクリプトなしで動く。Cloud Build で「未承認」として止まらないよう明示する
+  "@google/genai": false
+  protobufjs: false
+  # テスト（vitest）が使う。バイナリは optional の依存で入るので、スクリプトなしで動く
+  esbuild: false

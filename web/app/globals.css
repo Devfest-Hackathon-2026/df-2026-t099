@@ -1,0 +1,286 @@
+@import "tailwindcss";
+
+/* 見た目は2つの方式を切り替えられる（<html data-theme="apple|material">。決まっていなければ apple）。
+   どちらも、端末の「ライト／ダーク」の設定に合わせる。
+   - apple：Apple の Human Interface Guidelines。システムの色、Dynamic Type の文字の大きさ、すりガラスのヘッダー
+   - material：Google の Material Design 3。色は公式のライブラリ（material-color-utilities）で
+     種の色 #0b57d0 から作った「tonal spot」の配色。角丸・文字の大きさも M3 の段階
+   地図だけは、どちらでも「夜の海と灯台の光」の暗い画面のまま。灯りの色は --light（オレンジ） */
+
+:root,
+[data-theme="apple"] {
+  color-scheme: light;
+  --background: #f5f5f7;
+  --surface: #ffffff;
+  --surface-2: #e8e8ed;
+  --foreground: #1d1d1f;
+  --muted: #6e6e73;
+  --line: rgba(0, 0, 0, 0.08);
+  /* 押せる所の青。HIG のシステムの青（#0088FF）は白の上の小さな文字で 4.5:1 に届かないので、
+     apple.com の青（白の上で約 4.9:1）を使う */
+  --accent: #0071e3;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(0, 113, 227, 0.1);
+  --light: #ff8d28;
+  --light-ink: #b64400;
+  --danger: #c4161c;
+  --danger-bg: rgba(255, 56, 60, 0.1);
+  --header-bg: rgba(245, 245, 247, 0.8);
+  --header-blur: 20px;
+  --toast-bg: #1d1d1f;
+  /* トップの目立たせるタイル */
+  --feature-bg: #1d1d1f;
+  --feature-ink: #ffffff;
+  /* 切り替え（セグメント）の選んでいる側 */
+  --seg-on: #ffffff;
+  --r-card: 22px;
+  --r-tile: 28px;
+  --r-inner: 16px;
+  --font-main: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Hiragino Kaku Gothic ProN", var(--font-noto), "Meiryo UI", sans-serif;
+  --head-tracking: -0.015em;
+  /* Dynamic Type（標準の大きさ）：Caption 1 / Subhead / Body / Title 3 / Title 2 / Title 1 / Large Title */
+  --fs-xs: 12px;
+  --fs-sm: 15px;
+  --fs-base: 17px;
+  --fs-lg: 20px;
+  --fs-xl: 22px;
+  --fs-2xl: 28px;
+  --fs-3xl: 34px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="material"]) {
+    color-scheme: dark;
+    --background: #000000;
+    --surface: #1c1c1e;
+    --surface-2: #2c2c2e;
+    --foreground: #f5f5f7;
+    --muted: #98989d;
+    --line: rgba(255, 255, 255, 0.12);
+    --accent: #0091ff;
+    --accent-ink: #ffffff;
+    --accent-soft: rgba(0, 145, 255, 0.18);
+    --light: #ff9230;
+    --light-ink: #ff9230;
+    --danger: #ff4245;
+    --danger-bg: rgba(255, 66, 69, 0.16);
+    --header-bg: rgba(0, 0, 0, 0.72);
+    --toast-bg: #3a3a3c;
+    --feature-bg: #1c1c1e;
+    --feature-ink: #f5f5f7;
+    --seg-on: #636366;
+  }
+}
+
+[data-theme="material"] {
+  color-scheme: light;
+  --background: #faf8ff; /* surface */
+  --surface: #eeedf4; /* surfaceContainer */
+  --surface-2: #e2e2e9; /* surfaceContainerHighest */
+  --foreground: #1a1b21; /* onSurface */
+  --muted: #45464f; /* onSurfaceVariant */
+  --line: #c5c6d0; /* outlineVariant */
+  --accent: #495d92; /* primary */
+  --accent-ink: #ffffff; /* onPrimary */
+  --accent-soft: #dce2f9; /* secondaryContainer */
+  --light: #ff9f0a;
+  --light-ink: #735471; /* tertiary */
+  --danger: #ba1a1a; /* error */
+  --danger-bg: #ffdad6; /* errorContainer */
+  --header-bg: #faf8ff;
+  --header-blur: 0px;
+  --toast-bg: #2f3036; /* inverseSurface */
+  --feature-bg: #dae2ff; /* primaryContainer */
+  --feature-ink: #304578; /* onPrimaryContainer */
+  --seg-on: #dce2f9; /* secondaryContainer */
+  /* M3 の角丸：カードは medium（12）、大きな面は large（16）、中の小さな面は small（8） */
+  --r-card: 12px;
+  --r-tile: 16px;
+  --r-inner: 8px;
+  --font-main: var(--font-noto), "Roboto", "Hiragino Sans", "Meiryo UI", sans-serif;
+  --head-tracking: 0;
+  /* M3 の文字：Body S / Body M / Body L / Title L / Headline S / Headline M / Headline L */
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-base: 16px;
+  --fs-lg: 22px;
+  --fs-xl: 24px;
+  --fs-2xl: 28px;
+  --fs-3xl: 32px;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme="material"] {
+    color-scheme: dark;
+    --background: #121318;
+    --surface: #1e1f25;
+    --surface-2: #33343a;
+    --foreground: #e2e2e9;
+    --muted: #c5c6d0;
+    --line: #45464f;
+    --accent: #b2c5ff;
+    --accent-ink: #172e60;
+    --accent-soft: #404659;
+    --light-ink: #e1bbdd;
+    --danger: #ffb4ab;
+    --danger-bg: #93000a;
+    --header-bg: #121318;
+    --toast-bg: #e2e2e9;
+    --feature-bg: #304578;
+    --feature-ink: #dae2ff;
+    --seg-on: #404659;
+  }
+}
+
+:root {
+  --sea: #0a2a4f;
+  /* 動きの部品（ui-motion-parts）の色を、このアプリの色につなぐ */
+  --ui-accent: var(--accent);
+  --ui-accent-ink: var(--accent-ink);
+  --ui-ink: var(--toast-bg);
+  --ui-surf: var(--surface-2);
+  --ui-line: var(--line);
+  --ui-r: 14px;
+  --ui-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-sea: var(--sea);
+  --color-light: var(--light);
+  --color-light-ink: var(--light-ink);
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
+  --font-sans: var(--font-main);
+  /* 文字の大きさは方式ごとの段階に合わせる（日本語なので行の高さは少し広め） */
+  --text-xs: var(--fs-xs);
+  --text-xs--line-height: 1.5;
+  --text-sm: var(--fs-sm);
+  --text-sm--line-height: 1.55;
+  --text-base: var(--fs-base);
+  --text-base--line-height: 1.6;
+  --text-lg: var(--fs-lg);
+  --text-lg--line-height: 1.4;
+  --text-xl: var(--fs-xl);
+  --text-xl--line-height: 1.35;
+  --text-2xl: var(--fs-2xl);
+  --text-2xl--line-height: 1.25;
+  --text-3xl: var(--fs-3xl);
+  --text-3xl--line-height: 1.2;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-feature-settings: "palt";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: var(--head-tracking);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* キーボードで操作しているときだけ、選んでいる所に輪を出す */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* 日本語の見出しを、文節の切れ目で折り返す（Chrome・Edge）。行の長さもそろえる。
+   ほかのブラウザでは、ふつうの折り返しになる */
+h1,
+h2,
+h3,
+.phrase {
+  word-break: auto-phrase;
+  text-wrap: balance;
+}
+
+/* Material のカードは、平らな面に、ごく弱い影（elevation 1）を付ける */
+[data-theme="material"] .m3-elev {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+/* カード：次の1枚が後ろからせり上がる／答えた話題の点がはじける */
+.card-in { animation: cardIn 0.32s cubic-bezier(0.2, 0.8, 0.2, 1); }
+@keyframes cardIn { from { opacity: 0; scale: 0.94; translate: 0 14px; } }
+.dot-pop { animation: dotPop 0.6s cubic-bezier(0.3, 1.6, 0.5, 1); }
+@keyframes dotPop { 0% { transform: scale(0.2); } 40% { transform: scale(2.6); } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .card-in, .dot-pop { animation: none; } }
+
+/* サムネの文字：白い太字に黒いふち（YouTube のサムネでよくある形） */
+.thumb-text { color: #fff; -webkit-text-stroke: 7px #000; paint-order: stroke fill; text-shadow: 0 3px 0 rgb(0 0 0 / 0.35); word-break: auto-phrase; }
+
+/* 結果のスライド（components/result-story.tsx）
+   文字は語句ごとに下から現れる（1つ 520ms・間隔 70ms）。数字は止まった瞬間に少し跳ねる */
+.st-rise { display: block; animation: stRise 0.52s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes stRise { from { opacity: 0; transform: translateY(0.55em); clip-path: inset(0 0 100% 0); } to { opacity: 1; transform: none; clip-path: inset(-20% 0 -20% 0); } }
+.st-bump { animation: stBump 0.18s ease-out; }
+@keyframes stBump { 50% { transform: scale(1.08); } }
+.st-dot { animation: stDot 0.5s cubic-bezier(0.3, 1.6, 0.5, 1) both; }
+@keyframes stDot { from { opacity: 0; transform: scale(0); } }
+.st-fade { animation: stFade 0.6s ease both; }
+@keyframes stFade { from { opacity: 0; } }
+.st-drift { animation: stDrift 18s ease-in-out infinite alternate; }
+@keyframes stDrift { from { transform: translate3d(-6%, -4%, 0) scale(1); } to { transform: translate3d(6%, 5%, 0) scale(1.15); } }
+.st-marquee { animation: stMarquee 26s linear infinite; }
+.st-marquee-rev { animation: stMarquee 30s linear infinite reverse; }
+@keyframes stMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.st-pop { animation: stPop 0.6s cubic-bezier(0.3, 1.5, 0.5, 1) both; }
+@keyframes stPop { from { opacity: 0; transform: translateY(24px) scale(0.85) rotate(-3deg); } }
+.st-bar { transform-origin: left; transform: scaleX(0); }
+/* 前回とくらべる1枚：円が前回の大きさ（--from）から今回の大きさへ広がり、広がったときは波が1つ外へ出る */
+.st-grow { animation: stGrow 1.5s cubic-bezier(0.2, 1.25, 0.4, 1) 0.7s both; }
+@keyframes stGrow { from { transform: scale(var(--from, 1)); } }
+.st-ripple { animation: stRipple 1.4s ease-out 2.2s both; }
+@keyframes stRipple { 0% { opacity: 0; transform: scale(1); } 15% { opacity: 0.8; } 100% { opacity: 0; transform: scale(1.5); } }
+/* わたしの記録（app/history）：線が左から引かれ、広がった回の点から波が出つづける */
+.hist-line { stroke-dasharray: 1; animation: histLine 1.1s ease-out 0.2s both; }
+@keyframes histLine { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.hist-ripple { animation: histRipple 2s ease-out 1.3s infinite; }
+@keyframes histRipple { 0% { opacity: 0.9; transform: scale(1); } 100% { opacity: 0; transform: scale(2.6); } }
+@media (prefers-reduced-motion: reduce) {
+  .st-rise, .st-pop { animation: stFade 0.15s ease both; }
+  .st-dot, .st-bump, .st-drift, .st-marquee, .st-marquee-rev, .st-grow, .st-ripple, .hist-line, .hist-ripple { animation: none; }
+}
+
+/* 外へ出た話題（「見た」を押したとき）。点が灯り、輪が広がって消え、数字が緑に光る */
+.ob-ripple { fill: none; stroke: #7ff0dd; transform-box: fill-box; transform-origin: center; animation: obRipple 1.6s cubic-bezier(0.2, 0.7, 0.3, 1) both; }
+@keyframes obRipple { from { opacity: 0.95; transform: scale(1); } to { opacity: 0; transform: scale(7); } }
+.ob-glow { transform-box: fill-box; transform-origin: center; animation: obGlow 1.2s cubic-bezier(0.2, 0.8, 0.3, 1) both; }
+@keyframes obGlow { from { opacity: 0; transform: scale(0.1); } }
+.ob-light { transform-box: fill-box; transform-origin: center; animation: obLight 0.7s cubic-bezier(0.3, 1.8, 0.5, 1) both; }
+@keyframes obLight { 0% { transform: scale(0.4); } 45% { transform: scale(2.4); } 100% { transform: scale(1); } }
+.ob-flash { animation: obFlash 0.9s ease-out; }
+@keyframes obFlash { 0% { color: #7ff0dd; transform: scale(1.3); } 100% { transform: none; } }
+.ob-nudge { animation: obNudge 1.6s ease-in-out infinite; }
+@keyframes obNudge { 0%, 100% { box-shadow: 0 0 0 0 rgb(255 255 255 / 0.6); } 60% { box-shadow: 0 0 0 8px rgb(255 255 255 / 0); } }
+@media (prefers-reduced-motion: reduce) {
+  .ob-ripple { display: none; }
+  .ob-glow, .ob-light, .ob-flash, .ob-nudge { animation: none; }
+}
