@@ -16,14 +16,14 @@ const whoOf = (s: ShareSummary) => (s.sample ? "見本の人" : "わたし");
 export async function generateMetadata({ params }: PageProps<"/s/[id]">): Promise<Metadata> {
   const { id } = await params;
   const s = await getShareDoc(id);
-  const title = s ? `${whoOf(s)}のおすすめに、一度も出てこない話題は約 ${s.fogCount} / ${TOPICS.length}｜バブル診断` : "バブル診断";
+  const title = s ? `${whoOf(s)}のおすすめに、一度も出てこない話題は約 ${s.fogCount} / ${TOPICS.length}｜BubbLens` : "BubbLens";
   const description = "あなたの YouTube のおすすめに、一度も出てこない話題はいくつ？ カードに答えるだけで、1分で調べられます。登録はいりません。";
   return {
     title,
     description,
     // 共有された結果は検索結果に出さない（SNS のカードには出る）
     robots: { index: false, follow: false },
-    openGraph: { type: "website", siteName: "バブル診断", title, description, locale: "ja_JP" },
+    openGraph: { type: "website", siteName: "BubbLens", title, description, locale: "ja_JP" },
     twitter: { card: "summary_large_image", title, description },
   };
 }
@@ -51,7 +51,7 @@ async function ShareView({ params }: { params: PageProps<"/s/[id]">["params"] })
       <header className="mx-auto flex h-12 w-full max-w-[480px] items-center px-4">
         <Link href="/" className="flex items-center gap-2 text-[15px] font-semibold">
           <Mark />
-          バブル診断
+          BubbLens
         </Link>
       </header>
       <main className="mx-auto flex w-full max-w-[480px] flex-1 flex-col px-6 pb-[max(32px,env(safe-area-inset-bottom))] pt-6">
@@ -77,7 +77,7 @@ async function ShareView({ params }: { params: PageProps<"/s/[id]">["params"] })
             <ArrowRight size={18} aria-hidden />
           </Link>
           <Link href="/" className="mt-4 inline-flex min-h-11 items-center text-sm font-bold text-white/70 hover:text-white">
-            バブル診断について
+            BubbLensについて
           </Link>
         </section>
       </main>

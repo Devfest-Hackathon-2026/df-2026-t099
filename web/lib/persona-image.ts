@@ -91,7 +91,7 @@ export function drawPersonaImage(input: {
   c.fillText("あなたは YouTube に、どう思われている？", W / 2, H - 230);
   c.fillStyle = ORANGE;
   c.font = `600 40px ${FONT}`;
-  c.fillText("バブル診断", W / 2, H - 160);
+  c.fillText("BubbLens", W / 2, H - 160);
 
   return new Promise<Blob>((resolve) => canvas.toBlob((b) => resolve(b!), "image/png"));
 }
@@ -100,7 +100,7 @@ export function drawPersonaImage(input: {
 export async function shareImage(blob: Blob, name: string) {
   const file = new File([blob], name, { type: "image/png" });
   if (typeof navigator !== "undefined" && "canShare" in navigator && navigator.canShare({ files: [file] })) {
-    await navigator.share({ files: [file], title: "バブル診断" }).catch(() => {});
+    await navigator.share({ files: [file], title: "BubbLens" }).catch(() => {});
     return;
   }
   const url = URL.createObjectURL(blob);

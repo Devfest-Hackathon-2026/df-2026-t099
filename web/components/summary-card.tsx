@@ -21,7 +21,7 @@ export function SummaryCard({
 }) {
   return (
     <div className={`mx-auto w-[min(72vw,300px)] rounded-3xl bg-[#0b0d12]/85 p-5 text-white shadow-2xl ring-1 ring-white/15 ${className}`}>
-      <p className="text-xs font-bold text-(--light)">● バブル診断</p>
+      <p className="text-xs font-bold text-(--light)">● BubbLens</p>
       <p className="mt-3 text-xs text-white/70">{who}のおすすめに、一度も出てこない話題</p>
       <p className="font-black leading-none">
         <span className="text-lg">約</span>

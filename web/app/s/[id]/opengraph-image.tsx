@@ -8,7 +8,7 @@ import { genreOfTopic, topicLabel, TOPICS } from "@/lib/topics";
 
 // 共有リンクを SNS や LINE に貼ったときに出る画像（1200×630）。中身は最後のスライドのまとめに合わせる。
 // 日本語の字は、Google Fonts から、この画像に使う字だけを切り出した Noto Sans JP を取ってくる
-export const alt = "バブル診断の結果のまとめ";
+export const alt = "BubbLensの結果のまとめ";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -56,7 +56,7 @@ export default async function Image({ params }: { params: Promise<{ id: string }
   const tint = GENRES.find((g) => g.id === genreOfTopic(s.top[0]))?.color ?? "#1d2b64";
   const labels = s.top.map(topicLabel);
   const lines = {
-    brand: "● バブル診断",
+    brand: "● BubbLens",
     lead: `${who}の YouTube のおすすめに、一度も出てこない話題`,
     top3: s.top3 >= 15 ? `よく出る3つの話題で ${s.top3}%` : "よく出る3つの話題",
     typeHead: "見方のタイプ",

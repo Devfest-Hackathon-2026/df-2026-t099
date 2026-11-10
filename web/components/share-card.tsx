@@ -72,7 +72,7 @@ function draw(input: { shown: number; top3: number; coverage: number; watched?: 
   c.fillText("あなたのおすすめに、出てこない話題はいくつ？", W / 2, 1720);
   c.fillStyle = "#8b9bb2";
   c.font = `32px ${FONT}`;
-  c.fillText("バブル診断（試作）", W / 2, 1790);
+  c.fillText("BubbLens（試作）", W / 2, 1790);
 
   return new Promise<Blob>((resolve) => canvas.toBlob((b) => resolve(b!), "image/png"));
 }
@@ -86,7 +86,7 @@ export function ShareCard(props: { shown: number; top3: number; coverage: number
     const blob = await draw(props);
     const file = new File([blob], "bubble.png", { type: "image/png" });
     if (canShare && navigator.canShare({ files: [file] })) {
-      await navigator.share({ files: [file], title: "バブル診断" }).catch(() => {});
+      await navigator.share({ files: [file], title: "BubbLens" }).catch(() => {});
     } else {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");

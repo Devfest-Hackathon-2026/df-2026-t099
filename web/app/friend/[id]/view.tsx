@@ -24,7 +24,7 @@ export default function FriendView() {
     <PageShell
       back={false}
       title="友だちから、YouTube のおすすめを比べる誘いが届いています"
-      lead={`バブル診断は、YouTube のおすすめにどんな話題が出てくるかを調べるサービスです。${
+      lead={`BubbLensは、YouTube のおすすめにどんな話題が出てくるかを調べるサービスです。${
         type ? `友だちの見方のタイプは「${typeName(type)}（${type}）」でした。` : ""
       }あなたも診断すると、2人のおすすめがどれだけ似ているかがわかります。`}
     >

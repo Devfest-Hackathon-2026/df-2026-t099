@@ -3,8 +3,8 @@ import type { MetadataRoute } from "next";
 // スマホのホーム画面に追加したときの名前・アイコン・開き方
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "バブル診断",
-    short_name: "バブル診断",
+    name: "BubbLens",
+    short_name: "BubbLens",
     description: "YouTube のおすすめが、どれくらいかたよっているかを調べます。",
     start_url: "/",
     scope: "/",

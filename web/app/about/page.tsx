@@ -47,7 +47,7 @@ const STACK = [
 export default function AboutPage() {
   return (
     <PageShell
-      title="バブル診断のしくみ"
+      title="BubbLensのしくみ"
       lead="何を測っているのか、どこで Google の技術を使っているのか、データをどう扱っているのかをまとめました。"
     >
       <div className="flex flex-col gap-4">

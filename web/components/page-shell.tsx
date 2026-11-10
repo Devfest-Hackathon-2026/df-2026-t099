@@ -37,7 +37,7 @@ export function PageShell({
         <div className="mx-auto flex h-12 w-full max-w-3xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2 text-[15px] font-semibold">
           <Mark />
-          バブル診断
+          BubbLens
         </Link>
         <div className="flex items-center gap-3">
           <ThemeSwitch />

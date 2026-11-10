@@ -777,7 +777,7 @@ export function ResultStory({
       const url = `${location.origin}/s/${id}`;
       const text = `${diagnosis.source === "sample" ? "見本の人" : "わたし"}の YouTube のおすすめには、${TOPICS.length} の話題のうち約 ${fogCount} が一度も出てこなかった。あなたは？`;
       if (navigator.share) {
-        await navigator.share({ title: "バブル診断", text, url }).catch(() => {});
+        await navigator.share({ title: "BubbLens", text, url }).catch(() => {});
       } else {
         await navigator.clipboard.writeText(url);
         toast("リンクをコピーしました");
@@ -1017,7 +1017,7 @@ async function drawSummary(d: { who: string; kinds: number; top3: number; fogCou
   ctx.fillRect(0, 0, W, H);
   ctx.fillStyle = "#ff8d28";
   ctx.font = `700 40px ${font}`;
-  ctx.fillText("● バブル診断", 90, 330);
+  ctx.fillText("● BubbLens", 90, 330);
   ctx.fillStyle = "rgba(255,255,255,0.75)";
   ctx.font = `700 48px ${font}`;
   ctx.fillText(`${d.who}の YouTube のおすすめに、`, 90, 420);

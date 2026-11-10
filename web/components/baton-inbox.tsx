@@ -38,7 +38,7 @@ export function BatonInbox({ id, inviteId, onLit }: { id: string; inviteId?: str
 
   async function share() {
     const text =
-      "YouTube のおすすめのかたよりを調べる「バブル診断」で、私のおすすめに出てこない話題がわかったよ。リンク先の一覧から、好きな動画を1本すすめてくれない？ 私が見たら、私の結果にあなたの名前が残るよ。";
+      "YouTube のおすすめのかたよりを調べる「BubbLens」で、私のおすすめに出てこない話題がわかったよ。リンク先の一覧から、好きな動画を1本すすめてくれない？ 私が見たら、私の結果にあなたの名前が残るよ。";
     if (navigator.share) {
       await navigator.share({ text, url: link }).catch(() => {});
       return;

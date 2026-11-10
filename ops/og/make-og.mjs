@@ -34,7 +34,7 @@ const svg = `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
   <rect width="100%" height="100%" fill="#0b0d12"/>
   <circle cx="${cx}" cy="${cy}" r="170" fill="#ff9f0a" opacity="0.14"/>
   <g font-family="${font}" font-weight="700" fill="#ffffff">
-    <text x="64" y="96" font-size="30" fill="#ff9f0a">● バブル診断</text>
+    <text x="64" y="96" font-size="30" fill="#ff9f0a">● BubbLens</text>
     <text x="64" y="232" font-size="54">あなたのおすすめに、</text>
     <text x="64" y="308" font-size="54">一度も<tspan fill="#ff9f0a" font-size="64">出てこない</tspan></text>
     <text x="64" y="384" font-size="54">話題はいくつ？</text>
